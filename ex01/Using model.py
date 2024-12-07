@@ -25,3 +25,6 @@ for image_path in image_paths:
     for result in results:
         result.show()  # แสดงผลลัพธ์
         result.save("Output")  # บันทึกผลลัพธ์ไปยังโฟลเดอร์ "Output"
+
+
+
