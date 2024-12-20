@@ -1,11 +1,12 @@
 from ultralytics import YOLO
 import cv2
+import os
 
-YOLO_Model = 'CodeCit/Lab1 Detection/ex02/best_snake.pt'
-model = YOLO(YOLO_Model)
+folder_path = os.path.dirname(os.path.realpath(__file__))
+model_path = os.path.join(folder_path, "model_openvino_model")
+model = YOLO(model_path,task='detect')
 
 def detect_snake_in_video(video_path):
-    # เปิดวิดีโอ
     cap = cv2.VideoCapture(video_path)
     
     frame_count = 0
@@ -50,6 +51,7 @@ def detect_snake_in_video(video_path):
     cap.release()  # ปิดวิดีโอ
     cv2.destroyAllWindows()  # ปิดหน้าต่างที่เปิดอยู่
 
-# เรียกใช้ฟังก์ชัน
-video_path = 'CodeCit\Lab1 Detection\ex02\Snake_Test_2.mp4'  # เปลี่ยนเป็นที่อยู่ไฟล์วิดีโอของคุณ
+
+
+video_path = os.path.join(folder_path, "Sit_1.mp4")
 detect_snake_in_video(video_path)
