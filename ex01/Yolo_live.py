@@ -3,9 +3,10 @@ import os
 from ultralytics import YOLO
 
 folder_path = os.path.dirname(os.path.realpath(__file__))
-model_path = os.path.join(folder_path, "yolo11n.onnx")
-# model = YOLO(model_path , task='detect')
-model = YOLO("yolo11n.pt")
+# model_path = os.path.join(folder_path, "yolo11n.onnx")
+model_path = os.path.join(folder_path, "modelYolo.onnx")
+model = YOLO(model_path , task='detect')
+# model = YOLO("yolo11n.pt")
 
 cap = cv2.VideoCapture(0)
 
@@ -20,5 +21,6 @@ while cap.isOpened():
             break
     else:
         break
+    
 cap.release()
 cv2.destroyAllWindows()
