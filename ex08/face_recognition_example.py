@@ -159,9 +159,9 @@ if __name__ == "__main__":
     
     # โหลดภาพที่รู้จัก
     image_paths = [
-        "CodeCit/Lab1 Detection/ex08/tee.jpg"
+        "CodeCit/Lab1-Detection/ex08/tee.jpg"
     ]
-    names = ["tee"]
+    names = ["Cap"]
     
     face_system.load_known_faces(image_paths, names)
     face_system.run()
