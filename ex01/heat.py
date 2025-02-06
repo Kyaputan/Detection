@@ -23,7 +23,8 @@ heatmap = solutions.Heatmap(
     colormap=cv2.COLORMAP_PARULA,
     region=region_points,
     show_in=True,  
-    show_out=True
+    show_out=True,
+    conf = 0.1
 )
 
 # Process video
