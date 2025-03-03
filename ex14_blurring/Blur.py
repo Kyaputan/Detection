@@ -4,28 +4,29 @@ import os
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
-# โหลดโมเดล YOLO
+
 model = YOLO("D:\Code\CodeCit\Lab1-Detection\ex14_blurring\Blur.pt")
 names = model.names
 
-# กำหนดพาธของโฟลเดอร์ที่มีรูปภาพ
+
 image_folder = "CodeCit\Lab1-Detection\ex14_blurring\input"
 output_folder = "CodeCit\Lab1-Detection\ex14_blurring\Output"
 os.makedirs(output_folder, exist_ok=True)
 
-# ดึงชื่อไฟล์รูปภาพทั้งหมดที่เป็น .jpg
+
 image_files = glob.glob(os.path.join(image_folder, "*.jpg"))
 
-# Blur ratio
-blur_ratio = 50
+
+
+blur_ratio = 100
 
 for image_path in image_files:
     im0 = cv2.imread(image_path)
     if im0 is None:
         print(f"Error reading image: {image_path}")
         continue
-
-    results = model.predict(im0 , conf = 0.01)
+    im0 = cv2.resize(im0, (0, 0), fx=0.3, fy=0.3)
+    results = model.predict(im0 , conf = 0.1)
     boxes = results[0].boxes.xyxy.cpu().tolist()
     clss = results[0].boxes.cls.cpu().tolist()
     annotator = Annotator(im0, line_width=2, example=names)
