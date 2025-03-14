@@ -1,6 +1,5 @@
 import cv2
 import os
-import ultralytics
 from ultralytics import YOLO, solutions
 
 folder_path = os.path.dirname(os.path.realpath(__file__))
