@@ -5,12 +5,12 @@ from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
 
-model = YOLO("D:\Code\CodeCit\Lab1-Detection\ex14_blurring\Blur.pt")
+model = YOLO("D:\Code\CodeCit\Detection\ex14_blurring\Blur.pt")
 names = model.names
 
 
-image_folder = "CodeCit\Lab1-Detection\ex14_blurring\input"
-output_folder = "CodeCit\Lab1-Detection\ex14_blurring\Output"
+image_folder = "CodeCit\Detection\ex14_blurring\input"
+output_folder = "CodeCit\Detection\ex14_blurring\Output"
 os.makedirs(output_folder, exist_ok=True)
 
 
@@ -26,7 +26,7 @@ for image_path in image_files:
         print(f"Error reading image: {image_path}")
         continue
     im0 = cv2.resize(im0, (0, 0), fx=0.3, fy=0.3)
-    results = model.predict(im0 , conf = 0.1)
+    results = model.predict(im0 , conf = 0.05)
     boxes = results[0].boxes.xyxy.cpu().tolist()
     clss = results[0].boxes.cls.cpu().tolist()
     annotator = Annotator(im0, line_width=2, example=names)
