@@ -13,6 +13,7 @@ model = YOLO(model_path , task='detect')
 
 cap = cv2.VideoCapture(video_path)
 
+
 while cap.isOpened():
     success, frame = cap.read()
     if success:
